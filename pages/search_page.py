@@ -16,6 +16,8 @@ class SearchPage(BasePage):
 
         self.NUMBER_OF_DISPLAYED_ITEMS = By.CSS_SELECTOR, "select[aria-label='Display Number of Items']"
 
+        self.SEARCHED_PRODUCT = By.CSS_SELECTOR, "div.product-cell-container"
+
         self.PRODUCT__TITLE = By.CSS_SELECTOR,
 
     @property
@@ -35,6 +37,12 @@ class SearchPage(BasePage):
     def number_of_displayed_items(self):
         return WebDriverWait(self.driver, 5).until(
             EC.visibility_of_element_located(self.NUMBER_OF_DISPLAYED_ITEMS)
+        )
+
+    @property
+    def searched_product(self):
+        return WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable(self.SEARCHED_PRODUCT)
         )
 
     def is_loaded(self):
