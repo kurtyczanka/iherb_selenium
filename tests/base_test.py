@@ -1,6 +1,8 @@
 import unittest
 from selenium import webdriver
 
+from timeouts import Timeouts
+
 
 class BaseTest(unittest.TestCase):
 
@@ -8,9 +10,9 @@ class BaseTest(unittest.TestCase):
         self.driver = webdriver.Chrome()
         self.driver.get("https://pl.iherb.com/")
         self.driver.maximize_window()
-        self.driver.set_page_load_timeout(20)
+        self.driver.set_page_load_timeout(Timeouts.page_load)
         self.driver.find_element_by_css_selector("button[id='truste-consent-button']").click()
-        self.driver.set_page_load_timeout(20)
+        self.driver.set_page_load_timeout(Timeouts.page_load)
 
     def tearDown(self):
         self.driver.quit()

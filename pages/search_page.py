@@ -2,10 +2,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
-from time import sleep
-from random import choice, randrange
+from random import randrange
 
 from pages.base_page import BasePage
+from timeouts import Timeouts
 
 
 class SearchPage(BasePage):
@@ -26,33 +26,29 @@ class SearchPage(BasePage):
 
     @property
     def product__page(self):
-        return WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located(self.PRODUCT__PAGE), "Product page did not load")
+        return WebDriverWait(self.driver, Timeouts.base_timeout).until(
+            EC.visibility_of_element_located(self.PRODUCT__PAGE), "Product page is not visible"
+        )
 
     @property
     def searched__products(self):
         """
         :return list of searched products'
         """
-        return WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_all_elements_located(self.SEARCHED__PRODUCTS))
+        return WebDriverWait(self.driver, Timeouts.base_timeout).until(
+            EC.visibility_of_all_elements_located(self.SEARCHED__PRODUCTS), "Searched product not found"
+        )
 
     @property
     def number_of_displayed_items(self):
-        return WebDriverWait(self.driver, 5).until(
-            EC.visibility_of_element_located(self.NUMBER_OF_DISPLAYED_ITEMS)
+        return WebDriverWait(self.driver, Timeouts.quick).until(
+            EC.visibility_of_element_located(self.NUMBER_OF_DISPLAYED_ITEMS), "Number of displayed items not found"
         )
 
     @property
     def searched_product(self):
-        return WebDriverWait(self.driver, 5).until(
-            EC.element_to_be_clickable(self.SEARCHED_PRODUCT)
-        )
-
-    @property
-    def loader(self):
-        return WebDriverWait(self.driver, 10).until(
-            EC.invisibility_of_element_located(self.LOADER)
+        return WebDriverWait(self.driver, Timeouts.quick).until(
+            EC.element_to_be_clickable(self.SEARCHED_PRODUCT), "Searched product is not clickable"
         )
 
     def is_loaded(self):
@@ -70,7 +66,7 @@ class SearchPage(BasePage):
         self.wait_until_loader_disappear()
 
     def wait_until_loader_disappear(self):
-        return WebDriverWait(self.driver, 10).until(
+        return WebDriverWait(self.driver, Timeouts.base_timeout).until(
             EC.invisibility_of_element_located(self.LOADER), "Loader is still visible"
         )
 

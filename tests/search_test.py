@@ -41,9 +41,8 @@ class SearchTest(BaseTest):
 
         cart_popup = CartPopupPage(self.driver)
 
-        assert cart_popup.get_value_of_cart_popup_display() == "block", "Cart popup did not display. Expected 'block' " \
-                                                                        "css style. Actual: {}".format(
-            cart_popup.get_value_of_cart_popup_display())
+        assert cart_popup.get_value_of_cart_popup_display() == "block", "Cart popup did not display. Expected 'block'" \
+               "css style. Actual: {}".format(cart_popup.get_value_of_cart_popup_display())
 
         top_menu = TopMenuPage(self.driver)
         assert top_menu.get_cart_quantity() == "1", "Expected one product in the cart. Actual: {}".format(
