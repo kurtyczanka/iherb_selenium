@@ -18,7 +18,7 @@ class ProductReviewPage(BasePage):
 
     @property
     def product__review_page(self):
-        return WebDriverWait(self.driver, Timeouts.base_timeout).until(
+        return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
             EC.visibility_of_element_located(self.PRODUCT__REVIEW_PAGE), "Product page is not")
 
     def is_loaded(self):

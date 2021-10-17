@@ -26,7 +26,7 @@ class SearchPage(BasePage):
 
     @property
     def product__page(self):
-        return WebDriverWait(self.driver, Timeouts.base_timeout).until(
+        return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
             EC.visibility_of_element_located(self.PRODUCT__PAGE), "Product page is not visible"
         )
 
@@ -35,19 +35,19 @@ class SearchPage(BasePage):
         """
         :return list of searched products'
         """
-        return WebDriverWait(self.driver, Timeouts.base_timeout).until(
+        return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
             EC.visibility_of_all_elements_located(self.SEARCHED__PRODUCTS), "Searched product not found"
         )
 
     @property
     def number_of_displayed_items(self):
-        return WebDriverWait(self.driver, Timeouts.quick).until(
+        return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions_quick).until(
             EC.visibility_of_element_located(self.NUMBER_OF_DISPLAYED_ITEMS), "Number of displayed items not found"
         )
 
     @property
     def searched_product(self):
-        return WebDriverWait(self.driver, Timeouts.quick).until(
+        return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions_quick).until(
             EC.element_to_be_clickable(self.SEARCHED_PRODUCT), "Searched product is not clickable"
         )
 
@@ -66,7 +66,7 @@ class SearchPage(BasePage):
         self.wait_until_loader_disappear()
 
     def wait_until_loader_disappear(self):
-        return WebDriverWait(self.driver, Timeouts.base_timeout).until(
+        return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
             EC.invisibility_of_element_located(self.LOADER), "Loader is still visible"
         )
 

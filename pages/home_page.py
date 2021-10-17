@@ -19,18 +19,18 @@ class HomePage(BasePage):
 
     @property
     def search__field(self):
-        return WebDriverWait(self.driver, Timeouts.base_timeout).until(
+        return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
             EC.element_to_be_clickable(self.SEARCH__FIELD), "Search field not found"
         )
 
     @property
     def home__page(self):
-        return WebDriverWait(self.driver, Timeouts.base_timeout).until(
+        return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
             EC.visibility_of_element_located(self.HOME__PAGE), "Home page is not visible")
 
     @property
     def home__page_banner(self):
-        return WebDriverWait(self.driver, Timeouts.base_timeout).until(
+        return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
             EC.visibility_of_element_located(self.HOME__PAGE_BANNER), "Home page banner is not visible")
 
     def is_loaded(self):

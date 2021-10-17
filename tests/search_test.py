@@ -14,8 +14,8 @@ class SearchTest(BaseTest):
         search_page = SearchPage(self.driver)
         search_page.is_loaded()
 
-        assert search_page.searched__products == 1, "Expected one product on page. Actual: {}".format(search_page
-                                                                                                      .searched__products)
+        assert len(search_page.searched__products) == 1, "Expected one product on page. Actual: {}".format(len(search_page
+                                                                                                      .searched__products))
 
     def test_number_of_searched_products_is_equal_to_selected(self):
         home_page = HomePage(self.driver)

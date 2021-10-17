@@ -1,6 +1,8 @@
-class Timeouts:
-    quick = 5,
+class Timeouts(object):
+    element_search_expected_conditions_quick = 5
 
-    base_timeout = 10,
+    element_search_expected_conditions = 10
 
     page_load = 20
+
+
