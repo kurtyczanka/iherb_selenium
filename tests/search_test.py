@@ -15,7 +15,7 @@ class SearchTest(BaseTest):
         search_page.is_loaded()
 
         assert search_page.searched__products == 1, "Expected one product on page. Actual: {}".format(search_page
-                                                                                                    .searched__products)
+                                                                                                      .searched__products)
 
     def test_number_of_searched_products_is_equal_to_selected(self):
         home_page = HomePage(self.driver)
@@ -24,6 +24,7 @@ class SearchTest(BaseTest):
 
         search_page = SearchPage(self.driver)
         search_page.is_loaded()
+        search_page.select_number_of_product()
 
         assert search_page.count_searched_products() == search_page.get_number_of_displayed_items(), \
             "Number of displayed elements is not match. Expected: {}, Actual: {}".format(
@@ -40,13 +41,10 @@ class SearchTest(BaseTest):
 
         cart_popup = CartPopupPage(self.driver)
 
-        assert cart_popup.get_value_of_cart_popup_display() == "block", "Cart popup did not display. Expected block css style. " \
-                                                             "Actual: {}".format(
+        assert cart_popup.get_value_of_cart_popup_display() == "block", "Cart popup did not display. Expected 'block' " \
+                                                                        "css style. Actual: {}".format(
             cart_popup.get_value_of_cart_popup_display())
 
         top_menu = TopMenuPage(self.driver)
         assert top_menu.get_cart_quantity() == "1", "Expected one product in the cart. Actual: {}".format(
             top_menu.get_cart_quantity())
-
-
-
