@@ -18,3 +18,6 @@ class CartPopupPage(BasePage):
 
     def get_value_of_cart_popup_display(self):
         return self.cart__container.value_of_css_property("display")
+
+    def is_loaded(self):
+        assert self.cart__container

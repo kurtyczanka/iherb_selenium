@@ -22,8 +22,6 @@ class SearchPage(BasePage):
 
         self.LOADER = By.CSS_SELECTOR, "div.loader.loading"
 
-        self.PRODUCT__TITLE = By.CSS_SELECTOR,
-
     @property
     def product__page(self):
         return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
@@ -33,7 +31,7 @@ class SearchPage(BasePage):
     @property
     def searched__products(self):
         """
-        :return list of searched products'
+        :return list of searched products
         """
         return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
             EC.visibility_of_all_elements_located(self.SEARCHED__PRODUCTS), "Searched product not found"

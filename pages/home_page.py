@@ -25,6 +25,12 @@ class HomePage(BasePage):
 
         self.PRODUCT_TITLE = By.CSS_SELECTOR, "div.product-inner"
 
+        self.PRODUCT = By.CSS_SELECTOR, "a[data-ga-event-label='product']"
+
+        self.CART = By.CSS_SELECTOR, "div.iherb-header-cart"
+
+        self.BUTTON__ADD_TO_CART = By.CSS_SELECTOR, "button.btn-add-to-cart"
+
     @property
     def search__field(self):
         return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
@@ -67,6 +73,24 @@ class HomePage(BasePage):
             EC.element_to_be_clickable(self.PRODUCT_TITLE), "Product title not found"
         )
 
+    @property
+    def product(self):
+        return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
+            EC.element_to_be_clickable(self.PRODUCT), "Product not found"
+        )
+
+    @property
+    def cart(self):
+        return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
+            EC.element_to_be_clickable(self.CART), "Cart not found"
+        )
+
+    @property
+    def button__add_to_cart(self):
+        return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
+            EC.element_to_be_clickable(self.BUTTON__ADD_TO_CART), "Button add to cart not found"
+        )
+
     def is_loaded(self):
         assert self.search__field
         assert self.home__page
@@ -82,5 +106,13 @@ class HomePage(BasePage):
 
     def open_product_page_trending_now(self):
         self.product_title.click()
+
+    def add_product_to_cart(self):
+        self.move_mouse_to_element(self.product)
+        self.button__add_to_cart.click()
+
+    def open_cart(self):
+        self.cart.click()
+
 
 
