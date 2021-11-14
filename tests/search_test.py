@@ -41,7 +41,6 @@ class SearchTest(BaseTest):
         search_page.searched_product.click()
 
         cart_popup = CartPopupPage(self.driver)
-
         assert cart_popup.get_value_of_cart_popup_display() == "block", "Cart popup did not display. Expected 'block'" \
             "css style. Actual: {}".format(cart_popup.get_value_of_cart_popup_display())
 
