@@ -114,5 +114,8 @@ class HomePage(BasePage):
     def open_cart(self):
         self.cart.click()
 
+    def get_product_title(self):
+        return self.product.get_attribute("data-ga-title")
+
 
 

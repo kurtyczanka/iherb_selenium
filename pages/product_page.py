@@ -24,6 +24,7 @@ class ProductPage(BasePage):
 
         self.BUTTON__ADD_TO_CART = By.CSS_SELECTOR, "button.btn-add-to-cart"
 
+        self.PRODUCT__TITLE = By.CSS_SELECTOR, "#product-summary-header div.product-summary-title"
 
     @property
     def product__details(self):
@@ -67,6 +68,12 @@ class ProductPage(BasePage):
             EC.visibility_of_element_located(self.BUTTON__ADD_TO_CART), "Button add to cart is not found"
         )
 
+    @property
+    def product__title(self):
+        return WebDriverWait(self.driver, Timeouts.element_search_expected_conditions).until(
+            EC.visibility_of_element_located(self.PRODUCT__TITLE), "Product title is not found"
+        )
+
     def is_loaded(self):
         assert self.product__details
         assert self.product__image
@@ -78,3 +85,6 @@ class ProductPage(BasePage):
 
     def add_product_to_cart(self):
         self.button__add_to_cart.click()
+
+    def get_title(self):
+        return self.product__title.text
