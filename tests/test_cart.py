@@ -5,7 +5,7 @@ from tests.test_base import BaseTest
 
 
 class CartTest(BaseTest):
-    def test_add_product_to_cart(self):
+    def test_001_add_product_to_cart(self):
         home_page = HomePage(self.driver)
         home_page.is_loaded()
         home_page.add_product_to_cart()

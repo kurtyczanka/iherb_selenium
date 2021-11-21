@@ -6,7 +6,7 @@ from tests.test_base import BaseTest
 
 
 class ProductTest(BaseTest):
-    def test_title_on_product_page_match_title_on_home_page(self):
+    def test_002_title_on_product_page_match_title_on_home_page(self):
         home_page = HomePage(self.driver)
         home_page.is_loaded()
         title_on_home_page = home_page.get_product_title()
@@ -21,7 +21,7 @@ class ProductTest(BaseTest):
                                                             "home page. Expected: {}, Actual: {}" \
             .format(title_on_home_page, title_on_product_page)
 
-    def test_add_product_to_cart_from_product_page(self):
+    def test_003_add_product_to_cart_from_product_page(self):
         home_page = HomePage(self.driver)
         home_page.is_loaded()
 

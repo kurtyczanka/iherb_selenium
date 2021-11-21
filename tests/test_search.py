@@ -7,7 +7,7 @@ from tests.test_base import BaseTest
 
 
 class SearchTest(BaseTest):
-    def test_searched_product_displayed(self):
+    def test_004_searched_product_displayed(self):
         home_page = HomePage(self.driver)
         home_page.is_loaded()
         home_page.search_product(Constants.particular__product)
@@ -18,7 +18,7 @@ class SearchTest(BaseTest):
         assert len(search_page.searched__products) == 1, "Expected one product on page. Actual: {}".format(
             len(search_page.searched__products))
 
-    def test_number_of_searched_products_is_equal_to_selected(self):
+    def test_005_number_of_searched_products_is_equal_to_selected(self):
         home_page = HomePage(self.driver)
         home_page.is_loaded()
         home_page.search_product(Constants.product__category)
