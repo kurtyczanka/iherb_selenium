@@ -1,8 +1,6 @@
 from constants import Constants
-from pages.cart_popup_page import CartPopupPage
 from pages.home_page import HomePage
 from pages.search_page import SearchPage
-from pages.top_menu_page import TopMenuPage
 from tests.test_base import BaseTest
 
 
