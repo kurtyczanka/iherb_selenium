@@ -1,7 +1,7 @@
 from pages.cart_page import CartPage
 from pages.cart_popup_page import CartPopupPage
 from pages.home_page import HomePage
-from tests.base_test import BaseTest
+from tests.test_base import BaseTest
 
 
 class CartTest(BaseTest):

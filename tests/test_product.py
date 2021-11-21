@@ -2,7 +2,7 @@ from pages.cart_popup_page import CartPopupPage
 from pages.home_page import HomePage
 from pages.product_page import ProductPage
 from pages.top_menu_page import TopMenuPage
-from tests.base_test import BaseTest
+from tests.test_base import BaseTest
 
 
 class ProductTest(BaseTest):
